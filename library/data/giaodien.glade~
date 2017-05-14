@@ -343,12 +343,14 @@
         <child>
           <object class="GtkButton" id="btn_search">
             <property name="label" translatable="yes">Search</property>
-            <property name="width_request">100</property>
+            <property name="width_request">110</property>
+            <property name="height_request">0</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="halign">center</property>
-            <property name="margin_top">20</property>
+            <property name="border_width">0</property>
+            <property name="xalign">0.51999998092651367</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -359,12 +361,13 @@
         <child>
           <object class="GtkButton" id="btn_add">
             <property name="label" translatable="yes">Add</property>
-            <property name="width_request">100</property>
+            <property name="width_request">110</property>
+            <property name="height_request">0</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="halign">center</property>
-            <property name="margin_top">50</property>
+            <property name="margin_top">20</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -375,12 +378,13 @@
         <child>
           <object class="GtkButton" id="btn_delete">
             <property name="label" translatable="yes">Delete</property>
-            <property name="width_request">100</property>
+            <property name="width_request">110</property>
+            <property name="height_request">0</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="halign">center</property>
-            <property name="margin_top">50</property>
+            <property name="margin_top">20</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -391,12 +395,28 @@
         <child>
           <object class="GtkButton" id="btn_ghifile">
             <property name="label" translatable="yes">Save</property>
-            <property name="width_request">100</property>
+            <property name="width_request">110</property>
+            <property name="height_request">0</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="margin_top">50</property>
+            <property name="margin_top">20</property>
             <property name="yalign">0.49000000953674316</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="btn_help">
+            <property name="label" translatable="yes">Help</property>
+            <property name="width_request">110</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="margin_top">20</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -405,20 +425,36 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="btn_exit">
-            <property name="label" translatable="yes">Exit</property>
-            <property name="width_request">100</property>
+          <object class="GtkButton" id="btn_info">
+            <property name="label" translatable="yes">Information</property>
+            <property name="width_request">110</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="halign">center</property>
-            <property name="margin_top">50</property>
-            <property name="yalign">0.4699999988079071</property>
+            <property name="margin_top">15</property>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="btn_exit">
+            <property name="label" translatable="yes">Exit</property>
+            <property name="width_request">110</property>
+            <property name="height_request">0</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="halign">center</property>
+            <property name="margin_top">20</property>
+            <property name="yalign">0.4699999988079071</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">6</property>
           </packing>
         </child>
       </object>
@@ -517,84 +553,6 @@
             <property name="left_attach">0</property>
             <property name="top_attach">0</property>
           </packing>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
         </child>
       </object>
     </child>

@@ -65,11 +65,13 @@
         </child>
         <child>
           <object class="GtkButton" id="btn_add2">
-            <property name="label" translatable="yes">Add</property>
+            <property name="label">gtk-add</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="margin_top">20</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
           </object>
           <packing>
             <property name="left_attach">2</property>
@@ -136,13 +138,15 @@
         </child>
         <child>
           <object class="GtkButton" id="btn_delete2">
-            <property name="label" translatable="yes">Delete</property>
+            <property name="label">gtk-delete</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="margin_top">30</property>
+            <property name="use_stock">True</property>
             <property name="xalign">0.54000002145767212</property>
             <property name="yalign">0.49000000953674316</property>
+            <property name="always_show_image">True</property>
           </object>
           <packing>
             <property name="left_attach">2</property>
@@ -342,7 +346,7 @@
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkButton" id="btn_search">
-            <property name="label" translatable="yes">Search</property>
+            <property name="label">gtk-find</property>
             <property name="width_request">110</property>
             <property name="height_request">0</property>
             <property name="visible">True</property>
@@ -350,7 +354,9 @@
             <property name="receives_default">True</property>
             <property name="halign">center</property>
             <property name="border_width">0</property>
+            <property name="use_stock">True</property>
             <property name="xalign">0.51999998092651367</property>
+            <property name="always_show_image">True</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -360,7 +366,7 @@
         </child>
         <child>
           <object class="GtkButton" id="btn_add">
-            <property name="label" translatable="yes">Add</property>
+            <property name="label">gtk-add</property>
             <property name="width_request">110</property>
             <property name="height_request">0</property>
             <property name="visible">True</property>
@@ -368,6 +374,8 @@
             <property name="receives_default">True</property>
             <property name="halign">center</property>
             <property name="margin_top">20</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -376,15 +384,14 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="btn_delete">
-            <property name="label" translatable="yes">Delete</property>
-            <property name="width_request">110</property>
-            <property name="height_request">0</property>
+          <object class="GtkButton" id="btn_edit">
+            <property name="label">gtk-edit</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="halign">center</property>
             <property name="margin_top">20</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -393,15 +400,17 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="btn_ghifile">
-            <property name="label" translatable="yes">Save</property>
+          <object class="GtkButton" id="btn_delete">
+            <property name="label">gtk-delete</property>
             <property name="width_request">110</property>
             <property name="height_request">0</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="halign">center</property>
             <property name="margin_top">20</property>
-            <property name="yalign">0.49000000953674316</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -410,13 +419,17 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="btn_help">
-            <property name="label" translatable="yes">Help</property>
+          <object class="GtkButton" id="btn_ghifile">
+            <property name="label">gtk-save</property>
             <property name="width_request">110</property>
+            <property name="height_request">0</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="margin_top">20</property>
+            <property name="use_stock">True</property>
+            <property name="yalign">0.49000000953674316</property>
+            <property name="always_show_image">True</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -425,13 +438,15 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="btn_info">
-            <property name="label" translatable="yes">Information</property>
+          <object class="GtkButton" id="btn_help">
+            <property name="label">gtk-help</property>
             <property name="width_request">110</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="margin_top">15</property>
+            <property name="margin_top">20</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -440,8 +455,25 @@
           </packing>
         </child>
         <child>
+          <object class="GtkButton" id="btn_info">
+            <property name="label">gtk-info</property>
+            <property name="width_request">110</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="margin_top">15</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">6</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkButton" id="btn_exit">
-            <property name="label" translatable="yes">Exit</property>
+            <property name="label">gtk-cancel</property>
             <property name="width_request">110</property>
             <property name="height_request">0</property>
             <property name="visible">True</property>
@@ -449,12 +481,14 @@
             <property name="receives_default">True</property>
             <property name="halign">center</property>
             <property name="margin_top">20</property>
+            <property name="use_stock">True</property>
             <property name="yalign">0.4699999988079071</property>
+            <property name="always_show_image">True</property>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">6</property>
+            <property name="position">7</property>
           </packing>
         </child>
       </object>
@@ -523,20 +557,37 @@
     <property name="window_position">center</property>
     <child>
       <object class="GtkGrid" id="grid1">
+        <property name="width_request">400</property>
+        <property name="height_request">600</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="opacity">0.92000000000000004</property>
         <property name="halign">center</property>
-        <property name="valign">start</property>
         <property name="resize_mode">queue</property>
         <child>
           <object class="GtkButton" id="search_btn_search">
-            <property name="label" translatable="yes">Search</property>
+            <property name="label">gtk-find</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="margin_top">30</property>
-            <property name="yalign">0.49000000953674316</property>
+            <property name="use_stock">True</property>
+            <property name="yalign">0.50999999046325684</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="left_attach">3</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSearchEntry" id="input_search">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="margin_top">30</property>
+            <property name="primary_icon_name">edit-find-symbolic</property>
+            <property name="primary_icon_activatable">False</property>
+            <property name="primary_icon_sensitive">False</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -544,15 +595,88 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="input_search">
+          <object class="GtkSeparator" id="separator">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
+            <property name="can_focus">False</property>
             <property name="margin_top">30</property>
+            <property name="margin_bottom">20</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
-            <property name="top_attach">0</property>
+            <property name="top_attach">2</property>
+            <property name="width">5</property>
           </packing>
+        </child>
+        <child>
+          <object class="GtkTextView" id="textview1">
+            <property name="width_request">360</property>
+            <property name="height_request">500</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="margin_left">20</property>
+            <property name="margin_bottom">20</property>
+            <property name="resize_mode">immediate</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">5</property>
+            <property name="width">5</property>
+            <property name="height">2</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
     </child>

@@ -58,3 +58,4 @@ void window_search(GtkWidget *widget) {
 	g_signal_connect_swapped(G_OBJECT(search_btn_search), "clicked", G_CALLBACK(search_message),input_search);
 	gtk_widget_show_all(window_search);
 }
+// gcc `pkg-config --cflags gtk+-3.0` -o test2 test2.c `pkg-config --libs gtk+-3.0` libbt.a -w

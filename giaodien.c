@@ -26,6 +26,13 @@ GtkWidget *mainwindow;
 #define MAXLEN_WORD 150
 #define MAXLEN_MEAN 200
 #define BACKSP_LINE "\b \b"
+
+#define FILE_READ "library/data/data.txt"
+#define FILE_WRITE "library/data/data3.txt"
+#define NAME_SOUND_TREE "library/data/soutree"
+#define NAME_DIC_TREE "library/data/mytree"
+
+
 static struct termios orig_termios;
 static int ttyfd = STDIN_FILENO;
 

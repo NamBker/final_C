@@ -1,3 +1,4 @@
+
 void xoakytu(char str[100],int vitri){
 	int n=strlen(str);
 	for(int i=vitri;i<n;i++){
@@ -12,18 +13,61 @@ void xoakhoangtrangcuoichuoi(char str[100]){
 		k=strlen(str)-1;
 	}
 }
+// ham them tu vao dic
+int addWordToDic(BTA *dic,char *word,char *mean){
+	int rsize;
+	if(btsel(dic,word,mean,(MAXLEN_MEAN)*sizeof(char),&rsize)==0) {
+		return 0;
+	} else {
+		btins(dic,word,mean,(MAXLEN_MEAN)*sizeof(char));
+	}
+	return 1;
+}
+// ham them tu vao soud
+int addWordToSou(BTA *sou,char *word,char *mean){
+	int rsize;
+	char sound[MAXLEN_WORD];
+	if(btsel(sou,word,sound,MAXLEN_WORD*sizeof(char),&rsize)==0) {
+		if(strstr(sound,mean)==NULL && (strlen(sound)+strlen(mean))<MAXLEN_WORD){
+			strcat(sound,"\n");
+			strcat(sound,mean);
+			btupd(sou,word,sound,MAXLEN_WORD*sizeof(char));
+		}
+		return 0;
+	} else {
+		btins(sou,word,sound,MAXLEN_WORD*sizeof(char)); 
+	}
+	return 1;
+}
 
 void docfile(){
 	// doc file
 	char word[MAXLEN_WORD];
 	char mean[MAXLEN_MEAN];
-	FILE *f = fopen("library/data/Portuguese.txt","r");
+	char sound[MAXLEN_WORD];
+
+	FILE *f = fopen(FILE_READ,"r");
 	btinit();
-	dic = btcrt("library/data/mytree",0,0);
-	btpos(dic,1);
+	sou = btopn(NAME_SOUND_TREE,0,0);  
+	dic = btopn(NAME_DIC_TREE,0,0);
+
+	if(dic == NULL)
+		dic = btcrt(NAME_DIC_TREE,0,FALSE);
+	if(sou == NULL)
+		sou = btcrt(NAME_SOUND_TREE,0,FALSE);
+	if((dic == NULL)|| (sou == NULL))
+		exit(1);
+
+	if(!f){
+		printf("Cann't open file data\n");
+		exit(1);
+	}
 	while(fscanf(f,"%[^\t]\t%[^\n]\n",word,mean)>0){
 		xoakhoangtrangcuoichuoi(word);
-		btins(dic,word,mean,(MAXLEN_MEAN)*sizeof(char));
+		addWordToDic(dic,word,mean);
+		soundEx(sound,word,150,1);
+		addWordToSou(sou,sound,word);
+		
 	}
 	fclose(f);	
 }

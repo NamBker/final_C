@@ -24,7 +24,7 @@ GtkWidget *mainwindow;
 
 #define M 50
 #define MAXLEN_WORD 150
-#define MAXLEN_MEAN 500
+#define MAXLEN_MEAN 200
 #define BACKSP_LINE "\b \b"
 static struct termios orig_termios;
 static int ttyfd = STDIN_FILENO;

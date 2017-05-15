@@ -23,7 +23,7 @@ void docfile(){
 	btpos(dic,1);
 	while(fscanf(f,"%[^\t]\t%[^\n]\n",word,mean)>0){
 		xoakhoangtrangcuoichuoi(word);
-		btins(dic,word,mean,strlen(MAXLEN_MEAN)*sizeof(char));
+		btins(dic,word,mean,(MAXLEN_MEAN)*sizeof(char));
 	}
 	fclose(f);	
 }

@@ -1,85 +1,74 @@
-/***********************************************************/
-/***********************************************************/
-// FreeBSD 8.0 
-// Xfce 4.6.1
-// GTK 2.16.6 
-// Glade 3.6.7
-//
-// gcc `pkg-config --cflags --libs gtk+-2.0` -export-dynamic -o hello hello.c
-/***********************************************************/
+// gcc `pkg-config --cflags gtk+-3.0` -o test2 test2.c `pkg-config --libs gtk+-3.0` libbt.a -w
 
-#include "gtk/gtk.h"
 
-/***********************************************************/
+#include <gtk/gtk.h>
 
-#define GLADE
-// comment out this option to do it without Glade xml file
 
-/***********************************************************/
 
-// event handlers must be defined regardless 
-// if their gadgets are generated in code or Glade
-
-G_MODULE_EXPORT void on_window1_destroy( GtkWidget *widget, gpointer data )
+static void
+activate (GtkApplication *app,
+          gpointer        user_data)
 {
-gtk_main_quit ();
+  /* Declare variables */
+  GtkWidget *window;
+  GtkWidget *text_view;
+  GtkWidget *scrolled_window;
+
+  GtkTextBuffer *buffer;
+
+
+  /* Create a window with a title, and a default size */
+  window = gtk_application_window_new (app);
+  gtk_window_set_title (GTK_WINDOW (window), "TextView Example");
+  gtk_window_set_default_size (GTK_WINDOW (window), 220, 200);
+
+
+  /* The text buffer represents the text being edited */
+  buffer = gtk_text_buffer_new (NULL);
+  
+
+  /* Text view is a widget in which can display the text buffer. 
+   * The line wrapping is set to break lines in between words.
+   */
+  text_view = gtk_text_view_new_with_buffer (buffer);
+  // gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (text_view), GTK_WRAP_WORD); 
+
+
+  /* Create the scrolled window. Usually NULL is passed for both parameters so 
+   * that it creates the horizontal/vertical adjustments automatically. Setting 
+   * the scrollbar policy to automatic allows the scrollbars to only show up 
+   * when needed. 
+   */
+  scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window), 
+                                  GTK_POLICY_AUTOMATIC, 
+                                  GTK_POLICY_AUTOMATIC); 
+  /* The function directly below is used to add children to the scrolled window 
+   * with scrolling capabilities (e.g text_view), otherwise, 
+   * gtk_scrolled_window_add_with_viewport() would have been used
+   */
+  gtk_container_add (GTK_CONTAINER (scrolled_window), 
+                                         text_view);
+  gtk_container_set_border_width (GTK_CONTAINER (scrolled_window), 5);
+ 
+  
+  gtk_container_add (GTK_CONTAINER (window), scrolled_window);
+
+  gtk_widget_show_all (window);
 }
 
-G_MODULE_EXPORT void on_button1_clicked( GtkWidget *widget, gpointer data ) 
+
+
+int
+main (int argc, char **argv)
 {
-g_print ("Hello!\n");
+  GtkApplication *app;
+  int status;
+
+  app = gtk_application_new ("org.gtk.example", G_APPLICATION_FLAGS_NONE);
+  g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
+  status = g_application_run (G_APPLICATION (app), argc, argv);
+  g_object_unref (app);
+
+  return status;
 }
-
-/***********************************************************/
-
-int main( int argc, char *argv[] ) 
-{
-gtk_init (&argc, &argv);
-
-#ifdef GLADE
-GtkBuilder *builder = gtk_builder_new();
-gtk_builder_add_from_file( builder, "hello.glade", NULL );
-// need to open the resource
-
-GtkWindow *window1 = GTK_WINDOW( gtk_builder_get_object( builder, "window1" ) );
-// need to get reference to main widow
-// but no packing individual gadgets
-#else
-GtkWidget *window1 = gtk_window_new( GTK_WINDOW_TOPLEVEL );
-GtkWidget *box1 = gtk_vbox_new( FALSE, 0 );
-GtkWidget *box2 = gtk_hbox_new( FALSE, 0 );
-GtkWidget *label1 = gtk_label_new( "Enter Name" );
-GtkWidget *entry1 = gtk_entry_new();
-GtkWidget *button1 = gtk_button_new_with_label( "Hello" );
-// this list counld be quite long ...
-gtk_container_add( GTK_CONTAINER (window1), box1 );
-gtk_box_pack_start( GTK_BOX(box1), box2, TRUE, TRUE, 10 );
-gtk_box_pack_start( GTK_BOX(box2), label1, TRUE, TRUE, 10 );
-gtk_box_pack_start( GTK_BOX(box2), entry1, TRUE, TRUE, 10 );
-gtk_box_pack_start( GTK_BOX(box1), button1, TRUE, TRUE, 10 );
-// this list counld be quite long ...
-#endif
-
-#ifdef GLADE 
-gtk_builder_connect_signals( builder, NULL );
-// connect all handlers via single call
-#else
-g_signal_connect( G_OBJECT (window1), "destroy", G_CALLBACK (on_window1_destroy), NULL );
-g_signal_connect( G_OBJECT (button1), "clicked", G_CALLBACK (on_button1_clicked), NULL );
-// this list counld be quite long ...
-#endif
-
-#ifdef GLADE
-g_object_unref( G_OBJECT( builder ) );
-// one line cleanup for builder
-#endif
-
-gtk_widget_show_all( window1 );
-
-gtk_main ();
-
-return 0;
-}
-
-/***********************************************************/
-/***********************************************************/

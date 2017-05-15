@@ -4,12 +4,9 @@ void delete_message(GtkWidget *widget,gpointer data){
 	GtkWidget *label_tuxoa;
 	GtkWidget *label_nghiaxoa;
 	GtkWidget *label_thongbao;
-
-	mean *s;	
+	char word[MAXLEN_WORD];
+	char mean[MAXLEN_MEAN];
 	int rsize;
-	int i;
-	s=(mean*)malloc(sizeof(mean));
-	gchar *text;
 
 	builder = gtk_builder_new();
 	gtk_builder_add_from_file(builder, "library/data/giaodien.glade", NULL);
@@ -20,21 +17,26 @@ void delete_message(GtkWidget *widget,gpointer data){
 	label_nghiaxoa = GTK_WIDGET(gtk_builder_get_object(builder, "label_nghiaxoa"));
 	label_thongbao = GTK_WIDGET(gtk_builder_get_object(builder, "label_thongbao"));
 	gtk_label_set_text(GTK_LABEL(label_tuxoa), gtk_entry_get_text(GTK_ENTRY(widget)));
-	text = gtk_entry_get_text(GTK_ENTRY(widget));
+	strcpy(word,(char *)gtk_entry_get_text(GTK_ENTRY(widget)));
+	xoakhoangtrangcuoichuoi(word);
 
-	xoakhoangtrangcuoichuoi(text);
-
-	if( btdel(dic,text)){
-		gtk_label_set_text(GTK_LABEL(label_tuxoa),text);
-		gtk_label_set_text(GTK_LABEL(label_thongbao),"_____________________________\n\n     Kết quả xoá:\n\n      Không tồn tại từ này\n");
+	// tim kiem de lay du lieu
+	if(btsel(dic,word,mean,MAXLEN_MEAN*sizeof(char),&rsize)==0){
+		if( btdel(dic,word)){
+			gtk_label_set_text(GTK_LABEL(label_tuxoa),word);
+			gtk_label_set_text(GTK_LABEL(label_thongbao),"_____________________________\n\n     Kết quả xoá:\n\n      Không tồn tại từ này\n");
+		}
+		else{
+			gtk_label_set_text(GTK_LABEL(label_tuxoa),word);
+			gtk_label_set_text(GTK_LABEL(label_nghiaxoa),mean);
+			gtk_label_set_text(GTK_LABEL(label_thongbao),"_____________________________\n\n      Kết quả xoá:\n\n     Đã xoá thành công\n");
+		}
 	}
 	else{
-		gtk_label_set_text(GTK_LABEL(label_tuxoa),text);
-		gtk_label_set_text(GTK_LABEL(label_nghiaxoa),s->list[i]);
-		gtk_label_set_text(GTK_LABEL(label_thongbao),"_____________________________\n\n      Kết quả xoá:\n\n     Đã xoá thành công\n");
+		gtk_label_set_text(GTK_LABEL(label_tuxoa),word);
+		gtk_label_set_text(GTK_LABEL(label_nghiaxoa),"Kết quả tìm kiếm:________________________________\n\n        -Không tồn tại từ này");
 	}
 	gtk_widget_show_all(window_delete_mess);
-
 }
 
 void window_delete(GtkWidget *widget) {

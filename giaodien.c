@@ -8,9 +8,10 @@
 #include <time.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
-
+#include "library/data/soundex.h"
 
 BTA *dic;
+BTA *sou;
 
 GtkWidget *tu;
 GtkWidget *add_tu;
@@ -19,20 +20,28 @@ GtkWidget *add_nghia;
 GtkListStore *store;
 GtkTreeIter iter;
 GtkWidget * completion;
+GtkWidget *mainwindow;
 
 #define M 50
+#define MAXLEN_WORD 150
+#define MAXLEN_MEAN 500
 #define BACKSP_LINE "\b \b"
 static struct termios orig_termios;
 static int ttyfd = STDIN_FILENO;
-typedef char str[100];
-typedef struct{
-	str list[10];
-	int count;
-}mean;
+
+
 #include "func.h"
 #include "search.h"
 #include "delete.h"
 #include "add.h"
+#include "dialog.h"
+
+typedef struct{
+	char word[MAXLEN_WORD];
+	char mean[MAXLEN_MEAN];
+}data;
+data listDic[3500];
+
 
 int main(int argc, char** argv){
 
@@ -42,6 +51,8 @@ int main(int argc, char** argv){
 	GtkBuilder *builder;
 	GtkWidget *window,*btn_search,*btn_add,*btn_delete,*btn_exit,*btn_ghifile;
 	GtkWidget *entry;
+	GtkWidget *btn_help;
+	GtkWidget *btn_info;
 	gtk_init(&argc,&argv);
 	builder = gtk_builder_new();
 	gtk_builder_add_from_file(builder, "library/data/giaodien.glade", NULL);
@@ -56,13 +67,19 @@ int main(int argc, char** argv){
 	btn_delete = GTK_WIDGET(gtk_builder_get_object(builder, "btn_delete"));
 	entry = GTK_WIDGET(gtk_builder_get_object(builder, "entry"));
 	btn_ghifile = GTK_WIDGET(gtk_builder_get_object(builder, "btn_ghifile"));
+	btn_help = GTK_WIDGET(gtk_builder_get_object(builder, "btn_help"));
+	btn_info = GTK_WIDGET(gtk_builder_get_object(builder, "btn_info"));
 
+	mainwindow  = window;
 	// Bat su kien  button
 	g_signal_connect_swapped(G_OBJECT(btn_exit), "clicked", G_CALLBACK(gtk_main_quit), NULL);
-	g_signal_connect_swapped(G_OBJECT(btn_search), "clicked", G_CALLBACK(window_search), NULL);
+	g_signal_connect_swapped(G_OBJECT(btn_search), "clicked", G_CALLBACK(window_Search), NULL);
 	g_signal_connect_swapped(G_OBJECT(btn_add), "clicked", G_CALLBACK(window_add), NULL);
 	g_signal_connect_swapped(G_OBJECT(btn_delete), "clicked", G_CALLBACK(window_delete), NULL);
 	g_signal_connect(G_OBJECT(btn_ghifile), "clicked", G_CALLBACK(ghifile), NULL);
+	g_signal_connect(G_OBJECT(btn_help), "clicked", G_CALLBACK(show_guide), NULL);
+	g_signal_connect(G_OBJECT(btn_info), "clicked", G_CALLBACK(show_info), NULL);
+
 
 	gtk_widget_show_all(window);
 	gtk_main();

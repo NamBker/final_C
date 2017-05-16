@@ -1,5 +1,5 @@
-a 	một chút, một tí
-a.m	trước buổi trưa
+a 	a1
+a.m	a2
 abandon  	bỏ, từ bỏ
 abandoned  	bị bỏ rơi, bị ruồng bỏ
 ability	khả năng, năng lực

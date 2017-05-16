@@ -115,11 +115,22 @@ void window_Search(GtkWidget *widget) {
 	gtk_text_buffer_create_tag(buffer, "lmarg", "left_margin", 5, NULL);
 
 
+	completion=gtk_entry_completion_new();
+	gtk_entry_completion_set_text_column(completion,0);
+	GtkListStore *liststore=gtk_list_store_new(5,G_TYPE_STRING,G_TYPE_STRING,G_TYPE_STRING,G_TYPE_STRING,G_TYPE_STRING);
+	gtk_entry_completion_set_model(completion,GTK_TREE_MODEL(liststore));
 
-	completion = create_completion_widget();
 	gtk_entry_set_completion(GTK_ENTRY(input_search),completion);
-	g_object_unref(completion);
 
+	// completion = create_completion_widget();
+	// gtk_entry_set_completion(GTK_ENTRY(input_search),completion);
+	// g_object_unref(completion);
+
+	// GtkListStore *liststore=gtk_list_store_new(5,G_TYPE_STRING,G_TYPE_STRING,G_TYPE_STRING,G_TYPE_STRING,G_TYPE_STRING); 
+	// gtk_entry_completion_set_model(completion,GTK_TREE_MODEL(liststore));
+	g_signal_connect(G_OBJECT(input_search),"key-press-event",G_CALLBACK(searchword),liststore);
+  	g_signal_connect_after( G_OBJECT(input_search), "insert-text", G_CALLBACK(name_insert_after), liststore );
+  	g_signal_connect_after( G_OBJECT(input_search), "delete-text", G_CALLBACK(name_delete_after), liststore );
 	g_signal_connect_swapped(G_OBJECT(search_btn_search), "clicked", G_CALLBACK(check),input_search);
 	gtk_widget_show_all(window_search);
 }

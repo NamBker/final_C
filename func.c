@@ -102,6 +102,7 @@ static GtkEntryCompletion* create_completion_widget(void)
 	GtkTreeIter iter;
 	completion = gtk_entry_completion_new();
 	store = gtk_list_store_new(1, G_TYPE_STRING);
+	int count=0;
 	char word[MAXLEN_WORD];
 	char mean[MAXLEN_MEAN];
 
@@ -119,47 +120,91 @@ static GtkEntryCompletion* create_completion_widget(void)
 	return completion;
 }
 
-
+int isPrefix(char *s,char *word){
+  int len1,len2,i;
+  len1=strlen(s);
+  len2=strlen(word);
+  if (len1 > len2) return 0;
+  for (i=0;i<len1;i++){
+    if (s[i]!=word[i])
+      return 0;
+    }
+  return 1;
+}
 gboolean searchword(GtkWidget *entryword,GdkEvent *event,gpointer listword){
   GdkEventKey *key=(GdkEventKey *)event;
   GtkListStore *liststore=(GtkListStore *)listword;
   GtkTreeIter iter;
   int count=0,len;
   BTint value;//bien phuc vu cho ham xu ly tab(su dung thu vien btree)
-  char text[MAXLEN],near_word[MAXLEN];
+  char text[MAXLEN_WORD],near_word[MAXLEN_WORD];
   //ham xu ly dau Tab
   if (key->keyval==GDK_KEY_Tab){
-    strcpy(text,gtk_entry_get_text(GTK_ENTRY(entryword)));
-    if (bfndky(data,text,&value)==QNOKEY){
+    strcpy(text,(char *)gtk_entry_get_text(GTK_ENTRY(entryword)));
+    if (bfndky(dic,text,&value)==QNOKEY){
       // ham bnxtky tim key gan nhat voi key muon tim
-      bnxtky(data,near_word,&value);
+      bnxtky(dic,near_word,&value);
       if (isPrefix(text,near_word)){
         gtk_entry_set_text(GTK_ENTRY(entryword),near_word);
         gtk_editable_set_position(GTK_EDITABLE(entryword),strlen(near_word));
       }
       else return TRUE;
     }
-    display(entryword,NULL);
+    gtk_text_buffer_set_text(buffer,entryword, -1);
     return TRUE;
   }
   else{
-    //count=0;
-    strcpy(text,gtk_entry_get_text(GTK_ENTRY(entryword)));
-    // printf("%s\n", text);
-    // if (key->keyval!=GDK_KEY_BackSpace){
-    //     len=strlen(text);
-    //   text[len]=key->keyval;
-    //   text[len+1]='\0';
-    // }
-    bfndky(data,text,&value);
-    bnxtky(data,near_word,&value);
+    strcpy(text,(char *)gtk_entry_get_text(GTK_ENTRY(entryword)));
+    bfndky(dic,text,&value);
+    bnxtky(dic,near_word,&value);
     gtk_list_store_clear(liststore);
-    while ((isPrefix(text,near_word)!=0) && (count < 10)){
+    while ((isPrefix(text,near_word)!=0) && (count < 15)){
       gtk_list_store_append(liststore,&iter);
       gtk_list_store_set(liststore,&iter,0,near_word,-1);
-      bnxtky(data,near_word,&value);
+      bnxtky(dic,near_word,&value);
       count++;
     }
     return FALSE;
+  }
+}
+void name_insert_after (GtkEditable* entryword,
+                   gchar* new_text,
+                   gint new_length,
+                   gpointer position,
+                   gpointer listword){  
+  GtkListStore *liststore=(GtkListStore *)listword;
+  GtkTreeIter iter;
+  int count=0,len;
+  BTint value;
+  char text[MAXLEN_WORD],near_word[MAXLEN_WORD];  
+  strcpy(text,(char *)gtk_entry_get_text(GTK_ENTRY(entryword)));
+  bfndky(dic,text,&value);
+  bnxtky(dic,near_word,&value);
+  gtk_list_store_clear(liststore);
+  while ((isPrefix(text,near_word)!=0) && (count < 15)){
+    gtk_list_store_append(liststore,&iter);
+    gtk_list_store_set(liststore,&iter,0,near_word,-1);
+    bnxtky(dic,near_word,&value);
+    count++;
+  }  
+}
+void name_delete_after (GtkEditable* entryword,
+                   gint start_pos,
+                   gint end_pos,
+                   gpointer listword){
+  GtkListStore *liststore=(GtkListStore *)listword;
+  GtkTreeIter iter;
+  int count=0,len;
+  BTint value;
+  char text[MAXLEN_WORD],near_word[MAXLEN_WORD];  
+  strcpy(text,(char *)gtk_entry_get_text(GTK_ENTRY(entryword)));
+  bfndky(dic,text,&value);
+  bnxtky(dic,near_word,&value);
+  gtk_list_store_clear(liststore);
+  while ((isPrefix(text,near_word)!=0) && (count < 15)){
+    gtk_list_store_append(liststore,&iter);
+    gtk_list_store_set(liststore,&iter,0,near_word,-1);
+    bnxtky(dic,near_word,&value);
+    count++;
   }
 }

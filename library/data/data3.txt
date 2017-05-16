@@ -18,7 +18,6 @@ November	tháng 11
 OK	đồng ý, tán thành
 October	tháng 10
 Saturday	thứ 7
-September	tháng 9
 Sunday	Chủ nhật
 TV	vô tuyến truyền hình
 Thursday	thứ 5
@@ -26,6 +25,7 @@ Tuesday	thứ 3
 Wednesday	thứ 4
 a	a1
 a.m	a2
+a1	s
 abandon	bỏ, từ bỏ
 abandoned	bị bỏ rơi, bị ruồng bỏ
 ability	khả năng, năng lực

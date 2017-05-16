@@ -84,6 +84,8 @@ int main(int argc, char** argv){
 	btn_help = GTK_WIDGET(gtk_builder_get_object(builder, "btn_help"));
 	btn_info = GTK_WIDGET(gtk_builder_get_object(builder, "btn_info"));
 
+
+
 	mainwindow  = window;
 	// Bat su kien  button
 	g_signal_connect_swapped(G_OBJECT(btn_exit), "clicked", G_CALLBACK(gtk_main_quit), NULL);

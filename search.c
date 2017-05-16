@@ -3,7 +3,7 @@ GtkTextBuffer *buffer;
 GtkWidget *window_search;
 GtkTextIter iter2;
 
-void search_message(GtkWidget *widget,gpointer data){
+gboolean search_message(GtkWidget *widget,gpointer data){
 	GtkBuilder *builder;
 	GtkWidget *window_mess;
 	GtkWidget *label;
@@ -15,7 +15,6 @@ void search_message(GtkWidget *widget,gpointer data){
 	char thongBao[MAXLEN_MEAN];
 	char goiy[MAXLEN_WORD];
 	char temp[MAXLEN_WORD];
-
 	builder = gtk_builder_new();
 	gtk_builder_add_from_file(builder, "library/data/giaodien.glade", NULL);
 
@@ -48,15 +47,11 @@ void search_message(GtkWidget *widget,gpointer data){
 		} 
 	}
 
-	gtk_label_set_text(GTK_LABEL(label),word);
-	gtk_label_set_text(GTK_LABEL(label_nghia),thongBao);
-
-
-
-
-	gtk_widget_show_all(window_mess);
-
-
+	// -1 la cho no vao cuoi
+	gtk_text_buffer_get_iter_at_offset(buffer, &iter2,-1);
+	gtk_text_buffer_insert(buffer, &iter2,thongBao, -1);
+	strcpy(thongBao,"\0") ;
+	return TRUE;
 }
 
 gboolean check(GtkWidget *widget,gpointer data){
@@ -70,7 +65,6 @@ gboolean check(GtkWidget *widget,gpointer data){
 	char temp[MAXLEN_WORD];
 	strcpy(word,(char *)gtk_entry_get_text(GTK_ENTRY(widget)));
 	xoakhoangtrangcuoichuoi(word);
-	gtk_text_buffer_get_iter_at_offset(buffer, &iter, 0);
 	if(strlen(word) == 0){
 		strcpy(thongBao,"Bạn chưa nhập từ vào ô tìm kiếm!\n");
 	}
@@ -86,9 +80,12 @@ gboolean check(GtkWidget *widget,gpointer data){
 		} 
 		else{
 			strcpy(thongBao,mean);
+			strcat(thongBao,"\n");
 		} 
 	}
-	gtk_text_buffer_insert(buffer, &iter,thongBao, -1);
+	gtk_text_buffer_set_text(buffer,"", -1);
+	gtk_text_buffer_get_iter_at_offset(buffer, &iter2,-1);
+	gtk_text_buffer_insert_with_tags_by_name (buffer, &iter2, thongBao, -1, "italic","lmarg",  NULL);
 	return TRUE;
 }
 void window_Search(GtkWidget *widget) {
@@ -115,6 +112,8 @@ void window_Search(GtkWidget *widget) {
 
 	label_kq = GTK_WIDGET(gtk_builder_get_object(builder, "label_kq"));
 	buffer=gtk_text_view_get_buffer(GTK_TEXT_VIEW(show_search));
+	gtk_text_buffer_create_tag(buffer, "italic", "style", PANGO_STYLE_ITALIC, NULL);
+	gtk_text_buffer_create_tag(buffer, "lmarg", "left_margin", 5, NULL);
 
 
 
@@ -122,12 +121,15 @@ void window_Search(GtkWidget *widget) {
 	gtk_entry_set_completion(GTK_ENTRY(input_search),completion);
 	g_object_unref(completion);
 
-	g_signal_connect_swapped(G_OBJECT(search_btn_search), "clicked", G_CALLBACK(search_message),input_search);
+	g_signal_connect_swapped(G_OBJECT(search_btn_search), "clicked", G_CALLBACK(check),input_search);
 	gtk_widget_show_all(window_search);
 }
 // gcc `pkg-config --cflags gtk+-3.0` -o test2 test2.c `pkg-config --libs gtk+-3.0` libbt.a -w
 
-
+		// gtk_text_buffer_get_iter_at_offset(buffer, &iter2,-1);
+	// gtk_text_buffer_create_tag(buffer, "italic", "style", PANGO_STYLE_ITALIC, NULL);
+	// gtk_text_buffer_create_tag(buffer, "lmarg", "left_margin", 5, NULL);
+	// gtk_text_buffer_insert_with_tags_by_name (buffer, &iter2, thongBao, -1, "italic", "lmarg",  NULL);
 
 
 	// gtk_text_buffer_create_tag(buffer, "gap",

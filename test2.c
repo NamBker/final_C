@@ -3,37 +3,29 @@
 
 #include <gtk/gtk.h>
 
-
-
-static void
-activate (GtkApplication *app,
-          gpointer        user_data)
+int main (int argc, char **argv)
 {
-  /* Declare variables */
+
   GtkWidget *window;
   GtkWidget *text_view;
   GtkWidget *scrolled_window;
 
   GtkTextBuffer *buffer;
-
-
+    gtk_init(&argc, &argv);
   /* Create a window with a title, and a default size */
-  window = gtk_application_window_new (app);
+  window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
+  gtk_window_set_default_size(GTK_WINDOW(window), 350, 300);
+  gtk_window_set_title(GTK_WINDOW(window), "Lines & columns");
   gtk_window_set_title (GTK_WINDOW (window), "TextView Example");
   gtk_window_set_default_size (GTK_WINDOW (window), 220, 200);
-
-
   /* The text buffer represents the text being edited */
   buffer = gtk_text_buffer_new (NULL);
-  
-
   /* Text view is a widget in which can display the text buffer. 
    * The line wrapping is set to break lines in between words.
    */
   text_view = gtk_text_view_new_with_buffer (buffer);
   // gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (text_view), GTK_WRAP_WORD); 
-
-
   /* Create the scrolled window. Usually NULL is passed for both parameters so 
    * that it creates the horizontal/vertical adjustments automatically. Setting 
    * the scrollbar policy to automatic allows the scrollbars to only show up 
@@ -55,20 +47,7 @@ activate (GtkApplication *app,
   gtk_container_add (GTK_CONTAINER (window), scrolled_window);
 
   gtk_widget_show_all (window);
-}
 
-
-
-int
-main (int argc, char **argv)
-{
-  GtkApplication *app;
-  int status;
-
-  app = gtk_application_new ("org.gtk.example", G_APPLICATION_FLAGS_NONE);
-  g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
-  status = g_application_run (G_APPLICATION (app), argc, argv);
-  g_object_unref (app);
-
-  return status;
+  gtk_main();
+  return 0;
 }

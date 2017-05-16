@@ -168,12 +168,12 @@
         <child>
           <object class="GtkTextView" id="show_delete">
             <property name="width_request">359</property>
-            <property name="height_request">500</property>
+            <property name="height_request">400</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="margin_left">20</property>
             <property name="margin_right">20</property>
-            <property name="margin_bottom">20</property>
+            <property name="margin_top">20</property>
             <property name="resize_mode">immediate</property>
             <property name="hscroll_policy">natural</property>
             <property name="vscroll_policy">natural</property>
@@ -385,24 +385,6 @@
         <child>
           <placeholder/>
         </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
       </object>
     </child>
   </object>
@@ -527,7 +509,7 @@
           <object class="GtkButton" id="btn_search">
             <property name="label">gtk-find</property>
             <property name="width_request">110</property>
-            <property name="height_request">0</property>
+            <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -547,12 +529,12 @@
           <object class="GtkButton" id="btn_add">
             <property name="label">gtk-add</property>
             <property name="width_request">110</property>
-            <property name="height_request">0</property>
+            <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="halign">center</property>
-            <property name="margin_top">20</property>
+            <property name="margin_top">10</property>
             <property name="use_stock">True</property>
             <property name="always_show_image">True</property>
           </object>
@@ -565,10 +547,12 @@
         <child>
           <object class="GtkButton" id="btn_edit">
             <property name="label">gtk-edit</property>
+            <property name="width_request">110</property>
+            <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="margin_top">20</property>
+            <property name="margin_top">10</property>
             <property name="use_stock">True</property>
             <property name="always_show_image">True</property>
           </object>
@@ -582,12 +566,12 @@
           <object class="GtkButton" id="btn_delete">
             <property name="label">gtk-delete</property>
             <property name="width_request">110</property>
-            <property name="height_request">0</property>
+            <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="halign">center</property>
-            <property name="margin_top">20</property>
+            <property name="margin_top">10</property>
             <property name="use_stock">True</property>
             <property name="always_show_image">True</property>
           </object>
@@ -601,11 +585,11 @@
           <object class="GtkButton" id="btn_ghifile">
             <property name="label">gtk-save</property>
             <property name="width_request">110</property>
-            <property name="height_request">0</property>
+            <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="margin_top">20</property>
+            <property name="margin_top">10</property>
             <property name="use_stock">True</property>
             <property name="yalign">0.49000000953674316</property>
             <property name="always_show_image">True</property>
@@ -620,10 +604,11 @@
           <object class="GtkButton" id="btn_help">
             <property name="label">gtk-help</property>
             <property name="width_request">110</property>
+            <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="margin_top">20</property>
+            <property name="margin_top">10</property>
             <property name="use_stock">True</property>
             <property name="always_show_image">True</property>
           </object>
@@ -637,10 +622,11 @@
           <object class="GtkButton" id="btn_info">
             <property name="label">gtk-info</property>
             <property name="width_request">110</property>
+            <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="margin_top">15</property>
+            <property name="margin_top">10</property>
             <property name="use_stock">True</property>
             <property name="always_show_image">True</property>
           </object>
@@ -654,12 +640,12 @@
           <object class="GtkButton" id="btn_exit">
             <property name="label">gtk-cancel</property>
             <property name="width_request">110</property>
-            <property name="height_request">0</property>
+            <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="halign">center</property>
-            <property name="margin_top">20</property>
+            <property name="margin_top">10</property>
             <property name="use_stock">True</property>
             <property name="yalign">0.4699999988079071</property>
             <property name="always_show_image">True</property>
@@ -768,20 +754,8 @@
           </object>
           <packing>
             <property name="left_attach">0</property>
-            <property name="top_attach">2</property>
+            <property name="top_attach">1</property>
             <property name="width">5</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label_kq">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">start</property>
-            <property name="label" translatable="yes">Kết quả tìm kiếm</property>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">3</property>
           </packing>
         </child>
         <child>
@@ -797,51 +771,42 @@
           </packing>
         </child>
         <child>
-          <object class="GtkTextView" id="show_search">
-            <property name="width_request">360</property>
-            <property name="height_request">400</property>
+          <object class="GtkScrolledWindow" id="scrolledwindow">
+            <property name="width_request">400</property>
+            <property name="height_request">450</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="margin_left">20</property>
-            <property name="margin_top">20</property>
             <property name="resize_mode">immediate</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkTextView" id="show_search">
+                <property name="width_request">360</property>
+                <property name="height_request">400</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="halign">baseline</property>
+                <property name="margin_top">20</property>
+                <property name="resize_mode">immediate</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="left_attach">0</property>
-            <property name="top_attach">5</property>
+            <property name="top_attach">3</property>
             <property name="width">5</property>
-            <property name="height">2</property>
           </packing>
         </child>
         <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
+          <object class="GtkLabel" id="label2">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">start</property>
+            <property name="label" translatable="yes">Kết quả tìm kiếm</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
+          </packing>
         </child>
         <child>
           <placeholder/>

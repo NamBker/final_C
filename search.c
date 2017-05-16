@@ -89,6 +89,7 @@ void window_Search(GtkWidget *widget) {
 	GtkWidget *label_kq;
 	GtkWidget *input_search;
 
+	GtkWidget *scrolledwindow;
 
 	builder = gtk_builder_new();
 	gtk_builder_add_from_file(builder, "library/data/giaodien.glade", NULL);
@@ -106,6 +107,10 @@ void window_Search(GtkWidget *widget) {
 
 	label_kq = GTK_WIDGET(gtk_builder_get_object(builder, "label_kq"));
 	buffer=gtk_text_view_get_buffer(GTK_TEXT_VIEW(show_search));
+
+	scrolledwindow = GTK_WIDGET(gtk_builder_get_object(builder, "scrolledwindow"));
+
+
 	gtk_text_buffer_create_tag(buffer, "italic", "style", PANGO_STYLE_ITALIC, NULL);
 	gtk_text_buffer_create_tag(buffer, "lmarg", "left_margin", 5, NULL);
 

@@ -21,6 +21,13 @@ GtkListStore *store;
 GtkTreeIter iter;
 GtkWidget * completion;
 GtkWidget *mainwindow;
+/// thu muc chung cho cac ham
+GtkWidget *show_search;
+GtkWidget *show_delete;
+GtkTextBuffer *buffer;
+GtkWidget *window_search;
+GtkTextIter iter2;
+GtkWidget *window_delete_mess;
 
 #define M 50
 #define MAXLEN_WORD 150

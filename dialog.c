@@ -20,3 +20,4 @@ gboolean show_guide(GtkWidget *widget,gpointer database){
   gtk_dialog_run(GTK_DIALOG(dialog));
   gtk_widget_destroy(dialog);
 }
+

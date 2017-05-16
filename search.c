@@ -1,8 +1,3 @@
-GtkWidget *show_search;
-GtkTextBuffer *buffer;
-GtkWidget *window_search;
-GtkTextIter iter2;
-
 gboolean search_message(GtkWidget *widget,gpointer data){
 	GtkBuilder *builder;
 	GtkWidget *window_mess;
@@ -57,7 +52,6 @@ gboolean search_message(GtkWidget *widget,gpointer data){
 gboolean check(GtkWidget *widget,gpointer data){
 
 	int rsize,rsize2;
-	int i;
 	char word[MAXLEN_WORD];
 	char mean[MAXLEN_MEAN];
 	char thongBao[MAXLEN_MEAN];
@@ -124,36 +118,4 @@ void window_Search(GtkWidget *widget) {
 	g_signal_connect_swapped(G_OBJECT(search_btn_search), "clicked", G_CALLBACK(check),input_search);
 	gtk_widget_show_all(window_search);
 }
-// gcc `pkg-config --cflags gtk+-3.0` -o test2 test2.c `pkg-config --libs gtk+-3.0` libbt.a -w
-
-		// gtk_text_buffer_get_iter_at_offset(buffer, &iter2,-1);
-	// gtk_text_buffer_create_tag(buffer, "italic", "style", PANGO_STYLE_ITALIC, NULL);
-	// gtk_text_buffer_create_tag(buffer, "lmarg", "left_margin", 5, NULL);
-	// gtk_text_buffer_insert_with_tags_by_name (buffer, &iter2, thongBao, -1, "italic", "lmarg",  NULL);
-
-
-	// gtk_text_buffer_create_tag(buffer, "gap",
-	// 	"pixels_above_lines", 30, NULL);
-
-	// gtk_text_buffer_create_tag(buffer, "lmarg", 
-	// 	"left_margin", 5, NULL);
-	// gtk_text_buffer_create_tag(buffer, "blue_fg", 
-	// 	"foreground", "blue", NULL); 
-	// gtk_text_buffer_create_tag(buffer, "gray_bg", 
-	// 	"background", "gray", NULL); 
-	// gtk_text_buffer_create_tag(buffer, "italic", 
-	// 	"style", PANGO_STYLE_ITALIC, NULL);
-	// gtk_text_buffer_create_tag(buffer, "bold", 
-	// 	"weight", PANGO_WEIGHT_BOLD, NULL);
-
-		// gtk_text_buffer_insert_with_tags_by_name(buffer, &iter, 
-	// 	"Colored Text\n", -1, "blue_fg", "lmarg",  NULL);
-	// gtk_text_buffer_insert_with_tags_by_name (buffer, &iter, 
-	// 	"Text with colored background\n", -1, "lmarg", "gray_bg", NULL);
-
-	// gtk_text_buffer_insert_with_tags_by_name (buffer, &iter, 
-	// 	"Text in italics\n", -1, "italic", "lmarg",  NULL);
-
-	// gtk_text_buffer_insert_with_tags_by_name (buffer, &iter, 
-	// 	"Bold text\n", -1, "bold", "lmarg",  NULL);
 

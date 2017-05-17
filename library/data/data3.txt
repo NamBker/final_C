@@ -1,7 +1,3 @@
-December	tháng mười hai, tháng Chạp
-February	tháng 2
-Friday	thứ Sáu
-I	tôi, tớ
 Internet	liên mạng
 January	tháng giêng
 July	tháng 7
@@ -15,7 +11,9 @@ Ms	bà
 November	tháng 11
 OK	đồng ý, tán thành
 October	tháng 10
-Saturday	thứ 7
+Saturday	thứ 7 ngày 13
+vcc
+
 September	tháng 9
 Sunday	Chủ nhật
 TV	vô tuyến truyền hình
@@ -2963,6 +2961,8 @@ terrible	khủng khiếp, ghê sợ
 terribly	tồi tệ, không chịu nổi
 test	bài kiểm tra; kiểm tra, xét nghiệm, thử nghiệm
 text	nguyên văn, bản văn, chủ đề, đề tì
+thai	dep trai vl
+
 than	hơn
 thank	cám ơn
 thank-you	cảm ơn bạn (ông bà, anh chị...)

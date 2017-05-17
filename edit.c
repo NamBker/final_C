@@ -12,6 +12,7 @@ gboolean check_edit(GtkWidget *widget,gpointer data){
 
 	strcpy(word,(char*)gtk_entry_get_text(GTK_ENTRY(update_tu)));
 
+	earse_character(mean_update,'\n');
 	if((strcmp(word,"")== 0) || (strcmp(mean_update,"")== 0)){
 		strcpy(mess,"Dữ liệu chỉnh sửa thiếu hoặc chưa đúng.");
 	}

@@ -13,6 +13,14 @@ void xoakhoangtrangcuoichuoi(char str[100]){
 		k=strlen(str)-1;
 	}
 }
+void earse_character(char a[], char temp){
+    int n= strlen(a); // cai ham nay cua borland C++  dùng để lấy độ dài của chuỗi.
+     for(int i=0;i<n;i++){
+         if(a[i]==temp){
+            a[i] = ' ,';
+          }
+      }
+}
 // ham them tu vao dic
 int addWordToDic(BTA *dic,char *word,char *mean){
 	int rsize;

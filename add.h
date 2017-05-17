@@ -1,4 +1,4 @@
 #include "add.c"
 
-void window_dialog(GtkWidget *widget,gpointer data);
+gboolean check_add(GtkWidget *widget,gpointer data);
 void window_add(GtkWidget *widget);

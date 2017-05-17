@@ -1,11 +1,11 @@
 gboolean show_info(GtkWidget *widget,gpointer database){
   GdkPixbuf *pixbuf=gdk_pixbuf_new_from_file("images/thongtin.ico",NULL);
   GtkWidget *dialog=gtk_about_dialog_new();
-  gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(dialog),"Từ điển tên-email");
-  gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog),"Version 0.0");
+  gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(dialog),"Từ điển Anh-Việt");
+  gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog),"Version 5.0");
   gtk_about_dialog_set_copyright(GTK_ABOUT_DIALOG(dialog),
-    "(c) Việt Nhật \nNguyễn Văn Nam 20132696\nTrần Thị Như Hoa 20131520\nLê Đăng Thành 20133515\nPhan Văn Huy 20131786\n");
-  gtk_about_dialog_set_comments(GTK_ABOUT_DIALOG(dialog),"Giao diện chương trình được tham khảo code từ trang zetcode.com\n");
+    "(c) Việt Nhật K58\nNguyễn Văn Nam 20132696\nTrần Thị Như Hoa 20131520\nLê Đăng Thành 20133515\nPhan Văn Huy 20131786\n");
+  gtk_about_dialog_set_comments(GTK_ABOUT_DIALOG(dialog),"Giao diện chương trình được tham khảo code từ trang:\n\t zetcode.com,gtk.org,glade.gnome.org\n");
   gtk_about_dialog_set_logo(GTK_ABOUT_DIALOG(dialog),pixbuf);
   g_object_unref(pixbuf),pixbuf=NULL;
   gtk_dialog_run(GTK_DIALOG(dialog));

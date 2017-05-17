@@ -28,6 +28,11 @@ GtkTextBuffer *buffer;
 GtkWidget *window_search;
 GtkTextIter iter2;
 GtkWidget *window_delete_mess;
+GtkWidget *window_change;
+
+// thuc muc cho edit
+GtkWidget *update_tu;
+GtkWidget *update_nghia;
 
 #define M 50
 #define MAXLEN_WORD 150
@@ -49,6 +54,7 @@ static int ttyfd = STDIN_FILENO;
 #include "delete.h"
 #include "add.h"
 #include "dialog.h"
+#include "edit.h"
 
 typedef struct{
 	char word[MAXLEN_WORD];
@@ -63,7 +69,7 @@ int main(int argc, char** argv){
 	docfile();
 	// giao dien chinh(MENU)
 	GtkBuilder *builder;
-	GtkWidget *window,*btn_search,*btn_add,*btn_delete,*btn_exit,*btn_ghifile;
+	GtkWidget *window,*btn_search,*btn_add,*btn_delete,*btn_exit,*btn_ghifile,*btn_edit;
 	GtkWidget *entry;
 	GtkWidget *btn_help;
 	GtkWidget *btn_info;
@@ -83,8 +89,7 @@ int main(int argc, char** argv){
 	btn_ghifile = GTK_WIDGET(gtk_builder_get_object(builder, "btn_ghifile"));
 	btn_help = GTK_WIDGET(gtk_builder_get_object(builder, "btn_help"));
 	btn_info = GTK_WIDGET(gtk_builder_get_object(builder, "btn_info"));
-
-
+	btn_edit = GTK_WIDGET(gtk_builder_get_object(builder, "btn_edit"));
 
 	mainwindow  = window;
 	// Bat su kien  button
@@ -92,10 +97,10 @@ int main(int argc, char** argv){
 	g_signal_connect_swapped(G_OBJECT(btn_search), "clicked", G_CALLBACK(window_Search), NULL);
 	g_signal_connect_swapped(G_OBJECT(btn_add), "clicked", G_CALLBACK(window_add), NULL);
 	g_signal_connect_swapped(G_OBJECT(btn_delete), "clicked", G_CALLBACK(window_delete), NULL);
+	g_signal_connect_swapped(G_OBJECT(btn_edit), "clicked", G_CALLBACK(window_edit), NULL);
 	g_signal_connect(G_OBJECT(btn_ghifile), "clicked", G_CALLBACK(ghifile), NULL);
 	g_signal_connect(G_OBJECT(btn_help), "clicked", G_CALLBACK(show_guide), NULL);
 	g_signal_connect(G_OBJECT(btn_info), "clicked", G_CALLBACK(show_info), NULL);
-
 
 	gtk_widget_show_all(window);
 	gtk_main();

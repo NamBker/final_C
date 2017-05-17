@@ -9,9 +9,7 @@ gboolean delete_word(GtkWidget *widget,gpointer data){
 		gtk_widget_destroy(window_delete_mess);
 		show_dialog(widget,data,"Đã xoá thành công\n");
 		return TRUE;
-
 	}	
-	
 }
 
 void delete_message(char *w_delete){ 

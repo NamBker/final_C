@@ -98,30 +98,6 @@ gboolean ghifile(GtkWidget *widget,gpointer data){
 	return TRUE;
 
 }
-static GtkEntryCompletion* create_completion_widget(void)
-{
-	GtkEntryCompletion *completion;
-	GtkListStore *store;
-	GtkTreeIter iter;
-	completion = gtk_entry_completion_new();
-	store = gtk_list_store_new(1, G_TYPE_STRING);
-	int count=0;
-	char word[MAXLEN_WORD];
-	char mean[MAXLEN_MEAN];
-
-	gtk_entry_completion_set_model(completion, GTK_TREE_MODEL(store));
-	g_object_unref(store);
-	gtk_entry_completion_set_text_column(completion, 0);
-
-	int size;
-	gtk_list_store_clear(GTK_LIST_STORE(store));
-	btpos(dic,1);
-	while(btseln(dic,word,mean,MAXLEN_MEAN*sizeof(char),&size)==0){
-		gtk_list_store_append(store,&iter);
-		gtk_list_store_set(store,&iter,0,word,-1);
-	}
-	return completion;
-}
 
 int isPrefix(char *s,char *word){
   int len1,len2,i;

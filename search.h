@@ -1,4 +1,4 @@
 #include "search.c"
 
-gboolean search_message(GtkWidget *widget,gpointer data);
+gboolean check_search(GtkWidget *widget,gpointer data);
 void window_Search(GtkWidget *widget);

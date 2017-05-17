@@ -1,56 +1,4 @@
-gboolean search_message(GtkWidget *widget,gpointer data){
-	GtkBuilder *builder;
-	GtkWidget *window_mess;
-	GtkWidget *label;
-	GtkWidget *label_nghia;
-	int rsize,rsize2;
-	int i;
-	char word[MAXLEN_WORD];
-	char mean[MAXLEN_MEAN];
-	char thongBao[MAXLEN_MEAN];
-	char goiy[MAXLEN_WORD];
-	char temp[MAXLEN_WORD];
-	builder = gtk_builder_new();
-	gtk_builder_add_from_file(builder, "library/data/giaodien.glade", NULL);
-
-	window_mess = GTK_WIDGET(gtk_builder_get_object(builder, "window_mess"));
-	gtk_window_set_title (GTK_WINDOW (window_mess), "KQ Search");
-	label = GTK_WIDGET(gtk_builder_get_object(builder, "label"));
-	label_nghia = GTK_WIDGET(gtk_builder_get_object(builder, "label_nghia"));
-
-	gtk_label_set_text(GTK_LABEL(label), gtk_entry_get_text(GTK_ENTRY(widget)));
-
-	strcpy(word,(char *)gtk_entry_get_text(GTK_ENTRY(widget)));
-	xoakhoangtrangcuoichuoi(word);
-
-	if(strlen(word) == 0){
-		strcpy(thongBao,"Bạn chưa nhập từ vào ô tìm kiếm!");
-	}
-	else{
-		xoakhoangtrangcuoichuoi(word);
-		if(btsel(dic,word,mean,MAXLEN_MEAN*sizeof(char),&rsize)!=0){
-			strcpy(thongBao,"Xin lỗi! Không tìm thấy\n");
-
-			soundEx(goiy,word,MAXLEN_WORD,1);
-			if(btsel(sou,goiy,temp, MAXLEN_WORD*sizeof(char), &rsize2)==0) {
-				strcat(thongBao, "Có phải bạn muốn tìm:\n");
-				strcat(thongBao,temp );
-			}
-		} 
-		else{
-			strcpy(thongBao,mean);
-		} 
-	}
-
-	// -1 la cho no vao cuoi
-	gtk_text_buffer_get_iter_at_offset(buffer, &iter2,-1);
-	gtk_text_buffer_insert(buffer, &iter2,thongBao, -1);
-	strcpy(thongBao,"\0") ;
-	return TRUE;
-}
-
-gboolean check(GtkWidget *widget,gpointer data){
-
+gboolean check_search(GtkWidget *widget,gpointer data){
 	int rsize,rsize2;
 	char word[MAXLEN_WORD];
 	char mean[MAXLEN_MEAN];
@@ -131,7 +79,7 @@ void window_Search(GtkWidget *widget) {
 	g_signal_connect(G_OBJECT(input_search),"key-press-event",G_CALLBACK(searchword),liststore);
   	g_signal_connect_after( G_OBJECT(input_search), "insert-text", G_CALLBACK(name_insert_after), liststore );
   	g_signal_connect_after( G_OBJECT(input_search), "delete-text", G_CALLBACK(name_delete_after), liststore );
-	g_signal_connect_swapped(G_OBJECT(search_btn_search), "clicked", G_CALLBACK(check),input_search);
+	g_signal_connect_swapped(G_OBJECT(search_btn_search), "clicked", G_CALLBACK(check_search),input_search);
 	gtk_widget_show_all(window_search);
 }
 

@@ -72,8 +72,8 @@ void docfile(){
 	fclose(f);	
 }
 
-void ghifile(){
-	FILE *f=fopen("library/data/data3.txt","w");;
+gboolean ghifile(GtkWidget *widget,gpointer data){
+	FILE *f=fopen(FILE_WRITE,"w");;
 	char word[MAXLEN_WORD];
 	char mean[MAXLEN_MEAN];
 	int i,rsize;
@@ -94,6 +94,9 @@ void ghifile(){
 		j++;
 	}
 	fclose(f);
+	show_dialog(widget,data,"Ghi file thành công!");
+	return TRUE;
+
 }
 static GtkEntryCompletion* create_completion_widget(void)
 {

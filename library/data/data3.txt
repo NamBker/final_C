@@ -1,27 +1,14 @@
-Internet	liên mạng
-January	tháng giêng
-July	tháng 7
-June	tháng 6
-March	tháng ba, hành quân; cuộc hành quân
-May	tháng 5
-Monday	thứ 2
-Mr	ông, ngài
-Mrs	bà (đã có chồng)
 Ms	bà
 November	tháng 11
 OK	đồng ý, tán thành
 October	tháng 10
 Saturday	thứ 7 ngày 13
-vcc
-
-September	tháng 9
 Sunday	Chủ nhật
 TV	vô tuyến truyền hình
 Thursday	thứ 5
 Tuesday	thứ 3
 Wednesday	thứ 4
-a	a1
-a.m	a2
+a	a1 ,a4,a2 ,a3,
 abandon	bỏ, từ bỏ
 abandoned	bị bỏ rơi, bị ruồng bỏ
 ability	khả năng, năng lực
@@ -838,6 +825,13 @@ development	sự phát triển, sự trình bày, sự bày tỏ
 device	kế sách; thiết bị, dụng cụ, máy móc
 devote	hiến dâng, dành hết cho
 devoted	hiến dâng cho; hết lòng, nhiệt tình 
+df
+sdsas
+dsds
+
+
+
+sad	buồn, buồn bã
 diagram	biểu đồ
 diamond	kim cương
 diary	sổ nhật ký; lịch ghi nhớ
@@ -2526,9 +2520,7 @@ runner	người chạy
 running	sự chạy, cuộc chạy đua
 rural	(thuộc) nông thôn, vùng nông thôn
 rush	lao vào, xô đẩy; sự xông lên, sự lao vào
-sack	bào tải; đóng bao, bỏ vào bao
-sad	buồn, buồn bã
-sadly	một cách buồn bã, đáng buồn
+sack	bào tải; 
 sadness	sự buồn rầu, sự buồn bã
 safe	an toàn, chắc chắn, đáng tin
 safely	an toàn, chắc chắn, đáng tin
@@ -2962,7 +2954,6 @@ terribly	tồi tệ, không chịu nổi
 test	bài kiểm tra; kiểm tra, xét nghiệm, thử nghiệm
 text	nguyên văn, bản văn, chủ đề, đề tì
 thai	dep trai vl
-
 than	hơn
 thank	cám ơn
 thank-you	cảm ơn bạn (ông bà, anh chị...)
@@ -3188,6 +3179,9 @@ variety	sự đa dạng, trạng thái khác nhau
 various	khác nhau, thuộc về nhiều loại
 vary	thay đổi, làm cho khác nhau, biến đổi
 vast	rộng lớn, mênh mông
+vcc
+
+September	tháng 9
 vegetable	rau, thực vật
 vehicle	xe cộ
 venture	công việc kinh doanh; liều, mạo hiểm, cả gan
@@ -3346,3 +3340,6 @@ yours	cái của anh, chị,của các anh, các chị
 yourself	tự anh, tự chị, chính anh, chính mày, tự mày, tự mình
 youth	tuổi trẻ, tuổi thanh niên, tuổi niên thiếu
 zero	số không
+đóng bao, 
+
+sadly	một cách buồn bã, đáng buồn

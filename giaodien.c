@@ -34,7 +34,7 @@ GtkWidget *window_delete_mess;
 #define MAXLEN_MEAN 200
 #define BACKSP_LINE "\b \b"
 
-#define FILE_READ "library/data/data.txt"
+#define FILE_READ "library/data/data3.txt"
 #define FILE_WRITE "library/data/data3.txt"
 #define NAME_SOUND_TREE "library/data/soutree"
 #define NAME_DIC_TREE "library/data/mytree"

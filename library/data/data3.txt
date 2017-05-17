@@ -1,5 +1,3 @@
-CD	đĩa compact
-DVD	đĩa DVD (đĩa CD dung lượng lớn)
 December	tháng mười hai, tháng Chạp
 February	tháng 2
 Friday	thứ Sáu
@@ -18,6 +16,7 @@ November	tháng 11
 OK	đồng ý, tán thành
 October	tháng 10
 Saturday	thứ 7
+September	tháng 9
 Sunday	Chủ nhật
 TV	vô tuyến truyền hình
 Thursday	thứ 5
@@ -25,7 +24,6 @@ Tuesday	thứ 3
 Wednesday	thứ 4
 a	a1
 a.m	a2
-a1	s
 abandon	bỏ, từ bỏ
 abandoned	bị bỏ rơi, bị ruồng bỏ
 ability	khả năng, năng lực
@@ -1905,6 +1903,7 @@ mysterious	thần bí, huyền bí, khó hiểu
 mystery	điều huyền bí, điều thần bí
 nail	móng (tay, chân) móng vuốt
 naked	trần, khỏa thân, trơ trụi
+nam	deptrai
 name	tên; đặt tên, gọi tên
 narrow	hẹp, chật hẹp
 nation	dân tộc, quốc gia
